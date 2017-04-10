@@ -34,7 +34,7 @@ public class Shooter : MonoBehaviour {
 			prefab = candyPrefabs [index];
 		} else {
 			int index = Random.Range (0, candySquarePrefabs.Length);
-			prefab = candyPrefabs [index];
+			prefab = candySquarePrefabs [index];
 		}
 
 		sampleCandyCount++;
