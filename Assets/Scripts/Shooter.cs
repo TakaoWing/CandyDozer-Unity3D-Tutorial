@@ -10,6 +10,7 @@ public class Shooter : MonoBehaviour {
 
 	public GameObject[] candyPrefabs;
 	public GameObject[] candySquarePrefabs;
+	public GameObject candyHolder;
 	public float shotSpeed;
 	public float shotTorque;
 	public float baseWidth;
@@ -23,7 +24,7 @@ public class Shooter : MonoBehaviour {
 			Shot ();
 	}
 
-	GameObject SampleCandy(){
+	GameObject SampleCandy(){ // プレファブの抽選
 		
 		GameObject prefab = null;
 
@@ -41,9 +42,19 @@ public class Shooter : MonoBehaviour {
 		return prefab;
 	}
 
+	Vector3 GetInstantiatePosition(){ // 発射位置の計算
+
+		// 画面のサイズとInputの割合からCandy生成の位置を計算
+		float x = baseWidth * (Input.mousePosition.x / Screen.width) - (baseWidth / 2);
+		return transform.position + new Vector3 (x, 0, 0);
+	}
+
 	public void Shot(){
 		// プレファブからCandyオブジェクトを生成
-		GameObject candy = Instantiate(SampleCandy(), transform.position, Quaternion.identity) as GameObject; // オブジェクトの生成
+		GameObject candy = Instantiate(SampleCandy(), GetInstantiatePosition(), Quaternion.identity) as GameObject; // オブジェクトの生成
+
+		// 生成したCandyオブジェクトの親をCandyHolderに設定する
+		candy.transform.parent = candyHolder.transform;
 
 		// CadnyオブジェクトのRigidbodyを取得し力と回転を加える
 		Rigidbody candyRigidBody = candy.GetComponent<Rigidbody>();
