@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class CandyDestroyer : MonoBehaviour {
 
-	void Start () {
-		
+
+	void OnTriggerEnter(Collider other){ // 衝突したとき呼ばれる
+		if (other.gameObject.tag == "Candy")
+			Destroy (other.gameObject); // オブジェクトの削除
 	}
 
-	void Update () {
-		
-	}
 }
