@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class PusherController : MonoBehaviour {
 
-	// Use this for initialization
+	Vector3 startPosition;
+
+	public float amplitude; // 移動量パラメーター
+	public float speed; // 移動速度パラメーター
+
 	void Start () {
-		
+		startPosition = transform.localPosition; // 初期位置の保存
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
+		// 変位を計算
+		float z = amplitude * Mathf.Sin(Time.time * speed); // 移動量の計算
+
+		// zを変位させたポジションに再設定
+		transform.localPosition = startPosition + new Vector3(0,0,z); // 位置の反映
 	}
 }
