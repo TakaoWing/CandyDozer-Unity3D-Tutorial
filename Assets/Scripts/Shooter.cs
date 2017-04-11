@@ -75,7 +75,7 @@ public class Shooter : MonoBehaviour {
 		ConsumePower();
 	}
 
-	void OnGUI(){
+	void OnGUI(){ // ショットパワーの表示
 		GUI.color = Color.black;
 
 		// ShotPowerの残数を＋の数で表示
@@ -85,13 +85,13 @@ public class Shooter : MonoBehaviour {
 		GUI.Label (new Rect (0, 15, 100, 30), label);
 	}
 
-	void ConsumePower(){
+	void ConsumePower(){ // ショットパワーの消費処理
 		// ShotPowerを消費すると同時に回復のカウントをスタート
 		shotPower--;
 		StartCoroutine (RecoverPower ());
 	}
 
-	IEnumerator RecoverPower(){
+	IEnumerator RecoverPower(){ // ショットパワーの回復コルーティン
 		// 一定秒数待った後にshotPowerを回復
 		yield return new WaitForSeconds(RecoverySeconds);
 		shotPower++;

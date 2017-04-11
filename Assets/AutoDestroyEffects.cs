@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class AutoDestroyEffects : MonoBehaviour {
 
-	// Use this for initialization
+	ParticleSystem particle;
+
 	void Start () {
-		
+		particle = GetComponent<ParticleSystem> ();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
-		
+		// パーティカルの再生が終了したらGameObjectを削除
+		if(particle.isPlaying == false) Destroy(gameObject);
 	}
 }
