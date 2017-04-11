@@ -1,0 +1,12 @@
+<linker>
+<assembly fullname="Assembly-CSharp">
+<type fullname="AutoDestroyEffects" preserve="all"/>
+<type fullname="CandyDestroyer" preserve="all"/>
+<type fullname="CandyHolder" preserve="all"/>
+<type fullname="PusherController" preserve="all"/>
+<type fullname="Shooter" preserve="all"/>
+</assembly>
+<assembly fullname="UnityEngine.Analytics">
+<type fullname="UnityEngine.Analytics.AnalyticsTracker" preserve="all"/>
+</assembly>
+</linker>
